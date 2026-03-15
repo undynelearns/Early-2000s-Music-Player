@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --bg-darkness: 0.65;
+    --neon: 0, 255, 213;
+    --neon-gap: 6px; 
+}
+
+body{
+    background-color: #0a0114;
+    background-image: linear-gradient(rgba(0,0,0,var(--bg-darkness)), rgba(0,0,0,var(--bg-darkness))), url("assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+body::after{
+    content: "";
+    position: fixed;
+    inset: var(--neon-gap);
+    pointer-events: none;
+    border-radius: 8px;
+    box-shadow: 0 0 6px 2px rgba(var(--neon), 0.12);
+    opacity: 0;
+    z-index: 9999;
+    animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonPulse{
+    0%{
+        opacity: 0;
+        box-shadow: 0 0 4px 1px rgba(var(--neon), 0.06);
+    }
+    30%{
+        opacity: 1;
+        box-shadow: 0 0 18px 6px rgba(var(--neon), 0.95);
+    }
+    60%{
+        opacity: 0.7;
+        box-shadow: 0 0 10px 3px rgba(var(--neon), 0.5);
+    }
+    100%{
+        opacity: 0;
+        box-shadow: 0 0 4px 1px rgba(var(--neon), 0.06);
+    }
+}
+
+.container{
+    position: relative;
+    padding: 10px;
+}
+
+.container{
+    z-index: 2;
+}
+
+.page-title{
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-weight: 700;
+    font-size: clamp(20px, 3.5vw, 48px);
+    text-transform: uppercase;
+    color: rgba(var(--neon), 1);
+    text-align: center;
+    letter-spacing: 1px;
+    z-index: 10000;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(var(--neon), 0.9));
+    text-shadow:
+        0 0 6px rgba(var(--neon), 0.95),
+        0 0 12px rgba(var(--neon), 0.5),
+        0 0 24px rgba(var(--neon), 0.3);
+}
+
+.container .song-info{
+    background-color: #000;
+    margin: 0 15px;
+    padding: 15px 15px 5px 150px;
+    border-radius: 15px 15px 0 0;
+}
+
+.container .song-info .song-name{
+    color: #b9b9b9;
+    font-size: 14px;
+    margin: 3px 0 20px;
+}
+
+.container .song-info .artist-name{
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.container .song-info .progress-bar{
+    background-color: #505050;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.container .song-info .progress-bar .fill-bar{
+    width: 0;
+    height: 6px;
+    border-radius: 20px;
+    background: #00ff59;
+}
+
+.container .song-info .time{
+    font-size: 15px;
+    color: #b9b9b9;
+    margin: 10px 0;
+}
+
+.container .disk{
+    max-width: 120px;
+}
+
+.container .disk .active{
+    animation: rotate 3s linear 0s infinite forwards;
+}
+
+.container .disk .cover{
+    width: 145px;
+    height: 145px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: url("assets/1.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.container .disk .circle{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 15%;
+    top: 29%;
+    background-color: #fff;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.container .controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #292929;
+    width: 450px;
+    height: 100px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.container .controls #play{
+    background-color: #1db954;
+    color: #fff;
+    padding: 15px 17px 14px 18px;
+    font-size: 28px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.container .controls #play:hover{
+    background: #189945;
+}
+
+.container .controls i{
+    padding: 30px 8px;
+    font-size: 35px;
+    cursor: pointer;
+    color: #919191;
+    transition: all 0.3s ease;
+}
+
+.container .controls i:hover{
+    color: #fff;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
